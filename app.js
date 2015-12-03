@@ -1,9 +1,9 @@
 'use strict'
 
 var app = angular.module("app", ["restangular", "ui.bootstrap", "ui.router"]);
-app.config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlRouterProvider) {
+app.config(['$scope', '$stateProvider', '$urlRouterProvider', function(scope, stateProvider, urlRouterProvider) {
 
-/*	scope.org={
+	scope.org={
 		'companyName':'Shardha Software Solutions',
 		'slogan':'',
 		'branch':{
@@ -20,8 +20,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlR
 			}
 		}
 	}
-	*/
-
+	
 	//REDIRECTS AND SETTING URLS
 
 	// Use urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
@@ -67,32 +66,54 @@ app.config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlR
 
 				}
 			}
+	})
+
+	.state("career", {
+		abstract: true,
+		templateUrl : 'views/career.html'
+	}).state("career.career", {
+		url : '/career',
+		views : {
+			'header' : {
+				templateUrl : 'views/header.html'
+				},
+				'footer':{
+				templateUrl : 'views/footer.html'
+
+				}
+			}
+	})
+
+	.state("contact", {
+		abstract: true,
+		templateUrl : 'views/contact.html'
+	}).state("contact.contact", {
+		url : '/contact',
+		views : {
+			'header' : {
+				templateUrl : 'views/header.html'
+				},
+				'footer':{
+				templateUrl : 'views/footer.html'
+
+				}
+			}
+	})
+
+	.state("services", {
+		abstract: true,
+		templateUrl : 'views/services.html'
+	}).state("services.services", {
+		url : '/services',
+		views : {
+			'header' : {
+				templateUrl : 'views/header.html'
+				},
+				'footer':{
+				templateUrl : 'views/footer.html'
+				}
+			}
 	});
 
 
-
-
-/*	stateProvider
-    .state('index', {
-      url: "",
-      views: {
-        "viewA": { template: "index.viewA" },
-        "viewB": { template: "index.viewB" }
-      }
-    })
-    .state('route1', {
-      url: "/route1",
-      views: {
-        "viewA": { template: "route1.viewA" },
-        "viewB": { template: "route1.viewB" }
-      }
-    })
-    .state('route2', {
-      url: "/route2",
-      views: {
-        "viewA": { template: "route2.viewA" },
-        "viewB": { template: "route2.viewB" }
-      }
-    })
-*/
 }]);
