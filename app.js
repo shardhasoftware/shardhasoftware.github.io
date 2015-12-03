@@ -1,5 +1,7 @@
+'use strict'
+
 var app = angular.module("app", ["restangular", "ui.bootstrap", "ui.router"]);
-app.config(['$stateProvider', /*'$urlRouterProvider', */function(stateProvider/*, urlRouterProvider*/) {
+app.config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlRouterProvider) {
 
 /*	scope.org={
 		'companyName':'Shardha Software Solutions',
@@ -24,7 +26,7 @@ app.config(['$stateProvider', /*'$urlRouterProvider', */function(stateProvider/*
 
 	// Use urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
 
-	//	urlRouterProvider.otherwise('/home');
+	urlRouterProvider.otherwise('/home');
 	
 	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
 	// Here we are just setting up some convenience urls.
@@ -34,38 +36,63 @@ app.config(['$stateProvider', /*'$urlRouterProvider', */function(stateProvider/*
 	//STATE CONFIGURATIONS
 
 	// Use stateProvider to configure your states.
-	stateProvider.state("home", {
-	//	abstract: true,
+	stateProvider
+	.state("home", {
+		abstract: true,
+		templateUrl : 'views/home/home.html'
+	}).state("home.home", {
 		url : '/home',
-		templateUrl : 'views/indexpage/home.html',
-		views:{
-			'header':{
-				templateUrl: 'views/indexpage/header.html'
+		views : {
+			'header' : {
+				templateUrl : 'views/header.html'
+				},
+				'footer':{
+				templateUrl : 'views/footer.html'
+
+				}
 			}
-		}
-		
-		*/
-	})/*.state('about', {
-		url:'/about',
-		templateUrl: 'views/about.html',
-		views:{
-			'header':{
-				templateUrl: 'views/indexpage/header.html',
-				controller: headerCtrl
+	})
+
+	.state("about", {
+		abstract: true,
+		templateUrl : 'views/about/about.html'
+	}).state("about.about", {
+		url : '/about',
+		views : {
+			'header' : {
+				templateUrl : 'views/header.html'
+				},
+				'footer':{
+				templateUrl : 'views/footer.html'
+
+				}
 			}
-		}
+	});
 
-	});*/
-}]);
-app.run(['$rootScope', '$state', '$stateParams', function(rootScope, $state, $stateParams) {
-	// It's very handy to add references to $state and $stateParams to the $rootScope
-	// so that you can access them from any scope within your applications.For example,
-	// <li ui-sref-active="active }"> will set the <li> // to active whenever
-	// 'contacts.list' or one of its decendents is active.
 
-	window.$state = $state;
 
-	rootScope.$state = $state;
-	rootScope.$stateParams = $stateParams;
 
+/*	stateProvider
+    .state('index', {
+      url: "",
+      views: {
+        "viewA": { template: "index.viewA" },
+        "viewB": { template: "index.viewB" }
+      }
+    })
+    .state('route1', {
+      url: "/route1",
+      views: {
+        "viewA": { template: "route1.viewA" },
+        "viewB": { template: "route1.viewB" }
+      }
+    })
+    .state('route2', {
+      url: "/route2",
+      views: {
+        "viewA": { template: "route2.viewA" },
+        "viewB": { template: "route2.viewB" }
+      }
+    })
+*/
 }]);
