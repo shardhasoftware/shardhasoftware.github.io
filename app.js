@@ -1,9 +1,9 @@
 'use strict'
 
 var app = angular.module("app", ["restangular", "ui.bootstrap", "ui.router"]);
-app.config(['$scope', '$stateProvider', '$urlRouterProvider', function(scope, stateProvider, urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlRouterProvider) {
 
-	scope.org={
+	/*scope.org={
 		'companyName':'Shardha Software Solutions',
 		'slogan':'',
 		'branch':{
@@ -20,7 +20,7 @@ app.config(['$scope', '$stateProvider', '$urlRouterProvider', function(scope, st
 			}
 		}
 	}
-	
+	*/
 	//REDIRECTS AND SETTING URLS
 
 	// Use urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
@@ -37,48 +37,48 @@ app.config(['$scope', '$stateProvider', '$urlRouterProvider', function(scope, st
 	// Use stateProvider to configure your states.
 	stateProvider
 	.state("home", {
-		abstract: true,
+//		abstract: true,
 		templateUrl : 'views/home/home.html'
 	}).state("home.home", {
 		url : '/home',
 		views : {
 			'header' : {
-				templateUrl : 'views/header.html'
+				templateUrl : 'views/shared/header.html'
 				},
 				'footer':{
-				templateUrl : 'views/footer.html'
+				templateUrl : 'views/shared/footer.html'
 
 				}
 			}
 	})
 
 	.state("about", {
-		abstract: true,
+//		abstract: true,
 		templateUrl : 'views/about/about.html'
 	}).state("about.about", {
 		url : '/about',
 		views : {
 			'header' : {
-				templateUrl : 'views/header.html'
+				templateUrl : 'views/shared/header.html'
 				},
 				'footer':{
-				templateUrl : 'views/footer.html'
+				templateUrl : 'views/shared/footer.html'
 
 				}
 			}
 	})
 
-	.state("career", {
+/*	.state("career", {
 		abstract: true,
-		templateUrl : 'views/career.html'
+		templateUrl : 'views/career/career.html'
 	}).state("career.career", {
 		url : '/career',
 		views : {
 			'header' : {
-				templateUrl : 'views/header.html'
+				templateUrl : 'views/shared/header.html'
 				},
 				'footer':{
-				templateUrl : 'views/footer.html'
+				templateUrl : 'views/shared/footer.html'
 
 				}
 			}
@@ -86,15 +86,15 @@ app.config(['$scope', '$stateProvider', '$urlRouterProvider', function(scope, st
 
 	.state("contact", {
 		abstract: true,
-		templateUrl : 'views/contact.html'
+		templateUrl : 'views/contact/contact.html'
 	}).state("contact.contact", {
 		url : '/contact',
 		views : {
 			'header' : {
-				templateUrl : 'views/header.html'
+				templateUrl : 'views/shared/header.html'
 				},
 				'footer':{
-				templateUrl : 'views/footer.html'
+				templateUrl : 'views/shared/footer.html'
 
 				}
 			}
@@ -102,18 +102,18 @@ app.config(['$scope', '$stateProvider', '$urlRouterProvider', function(scope, st
 
 	.state("services", {
 		abstract: true,
-		templateUrl : 'views/services.html'
+		templateUrl : 'views/services/services.html'
 	}).state("services.services", {
 		url : '/services',
 		views : {
 			'header' : {
-				templateUrl : 'views/header.html'
+				templateUrl : 'views/shared/header.html'
 				},
 				'footer':{
-				templateUrl : 'views/footer.html'
+				templateUrl : 'views/shared/footer.html'
 				}
 			}
 	});
-
+*/
 
 }]);
