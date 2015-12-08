@@ -1,10 +1,10 @@
 <!doctype html>
 <html data-ng-app="app">
 <head>
-<script src="js/controller/footerCtrl.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <script  src="lib/jquery-2.1.4.min.js"></script>    
 <script  src="lib/angular.min.js" ></script>
@@ -15,16 +15,18 @@
 
 <script src="app.js"></script>
 
-</head>
-<body>
-<div class="app-header"></div>
-<div ui-view></div>
-<div class="app-footer"></div>
-
 <!-- //Controller Files -->
 <script src="js/controller/homeCtrl.js"></script>
-<script src="js/directive/app-header.js"></script>
-<script src="js/directive/app-footer.js"></script>
+<script src="js/directives/app-header.js"></script>
+<script src="js/directives/app-footer.js"></script>
 
+ <!-- could easily use a custom property of the state here instead of 'name' -->
+ <title ng-bind="'SSS - ' + state.current.name">SSS</title>
+
+</head>
+<body>
+<header class="app-header"></header>
+<div ui-view class="container"></div>
+<div class="app-footer"></div>
 </body>
 </html>

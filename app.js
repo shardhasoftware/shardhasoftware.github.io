@@ -1,119 +1,65 @@
 'use strict'
 
 var app = angular.module("app", ["restangular", "ui.bootstrap", "ui.router"]);
-app.config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlRouterProvider) {
 
-	/*scope.org={
-		'companyName':'Shardha Software Solutions',
-		'slogan':'',
-		'branch':{
-			branchId:'',
-			branchName:'', 
-			branchDetails:{
-				'phone':'',
-				'address':'',
-				'website':'',
-				'email':'',
-				'fb':'',
-				'linkedIn':'',
-				'twitter':''
-			}
-		}
-	}
-	*/
-	//REDIRECTS AND SETTING URLS
+app.run(['$rootScope', '$state', '$stateParams', function (rootScope,   state,   stateParams) {
 
-	// Use urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
+    // It's very handy to add references to $state and $stateParams to the $rootScope
+    // so that you can access them from any scope within your applications.For example,
+    // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+    // to active whenever 'contacts.list' or one of its decendents is active.
+    rootScope.state = state;
+    rootScope.stateParams = stateParams;
+    }]);
 
-	urlRouterProvider.otherwise('/home');
-	
-	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
-	// Here we are just setting up some convenience urls.
-	// If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
+app.config(['$stateProvider', '$urlRouterProvider', function (stateProvider,  urlRouterProvider) {
 
+      /////////////////////////////
+      // Redirects and Otherwise //
+      /////////////////////////////
 
-	//STATE CONFIGURATIONS
+      // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
+      urlRouterProvider
 
-	// Use stateProvider to configure your states.
-	stateProvider
-	.state("home", {
-//		abstract: true,
-		templateUrl : 'views/home/home.html'
-	}).state("home.home", {
-		url : '/home',
-		views : {
-			'header' : {
-				templateUrl : 'views/shared/header.html'
-				},
-				'footer':{
-				templateUrl : 'views/shared/footer.html'
+        // The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
+        // Here we are just setting up some convenience urls.
+        .when('/c?id', '/contacts/:id')
+        .when('/user/:id', '/contacts/:id')
 
-				}
-			}
-	})
+        // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
+        .otherwise('/home');
 
-	.state("about", {
-//		abstract: true,
-		templateUrl : 'views/about/about.html'
-	}).state("about.about", {
-		url : '/about',
-		views : {
-			'header' : {
-				templateUrl : 'views/shared/header.html'
-				},
-				'footer':{
-				templateUrl : 'views/shared/footer.html'
+      //////////////////////////
+      // State Configurations //
+      //////////////////////////
 
-				}
-			}
-	})
+      // Use $stateProvider to configure your states.
+      stateProvider
 
-/*	.state("career", {
-		abstract: true,
-		templateUrl : 'views/career/career.html'
-	}).state("career.career", {
-		url : '/career',
-		views : {
-			'header' : {
-				templateUrl : 'views/shared/header.html'
-				},
-				'footer':{
-				templateUrl : 'views/shared/footer.html'
+        .state("home", {
+          url: "/home",
+          templateUrl: 'views/home/home.html'
+        })
 
-				}
-			}
-	})
+        .state('about', {
+          url: '/about',
+          templateUrl: 'views/about/about.html'
+        })
 
-	.state("contact", {
-		abstract: true,
-		templateUrl : 'views/contact/contact.html'
-	}).state("contact.contact", {
-		url : '/contact',
-		views : {
-			'header' : {
-				templateUrl : 'views/shared/header.html'
-				},
-				'footer':{
-				templateUrl : 'views/shared/footer.html'
+        .state('career', {
+          url: '/career',
+          templateUrl: 'views/career/career.html'
+        })
 
-				}
-			}
-	})
+        .state('services', {
+          url: '/services',
+          templateUrl: 'views/services/services.html'
+        })
 
-	.state("services", {
-		abstract: true,
-		templateUrl : 'views/services/services.html'
-	}).state("services.services", {
-		url : '/services',
-		views : {
-			'header' : {
-				templateUrl : 'views/shared/header.html'
-				},
-				'footer':{
-				templateUrl : 'views/shared/footer.html'
-				}
-			}
-	});
-*/
+        .state('contact', {
+          url: '/contact',
+          templateUrl: 'views/contact/contact.html'
+        });
 
 }]);
+

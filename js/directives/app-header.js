@@ -1,10 +1,11 @@
-app.directive("appHeader", ['$scope', function(scope){
-	return: {
-		link:function(scope, ele,  attrs){
+'use strict';
+
+app.directive("appHeader", function(){
+	return {
+		link: function(scope, ele, attrs){
 
 		},
-		templateURL: '../../views/shared/header.html',
-		scope: scope,
-		restrict:'c'
+		restrict:'C',
+		templateUrl: 'views/shared/header.html'
 	}
-}]);
+});

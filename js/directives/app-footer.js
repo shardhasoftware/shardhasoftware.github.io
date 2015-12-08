@@ -1,10 +1,11 @@
-app.directive("appFooter", ['$scope', function(scope){
-	return: {
-		link:function(scope, ele,  attrs){
+'use strict';
+
+app.directive("appFooter", function(){
+	return {
+		link: function(scope, ele, attrs){
 
 		},
-		templateURL: '../../views/shared/header.html',
-		scope: scope,
-		restrict:'c'
+		restrict:'C',
+		templateUrl: 'views/shared/footer.html'
 	}
-}]);
+});
