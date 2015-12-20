@@ -1,6 +1,6 @@
 'use strict'
 
-var app = angular.module("app", ["restangular", "ui.bootstrap", "ui.router"]);
+var app = angular.module("app", ["restangular", "ui.bootstrap", "ngMaterial", "ui.router"]);
 
 app.run(['$rootScope', '$state', '$stateParams', function (rootScope, state, stateParams) {
 
