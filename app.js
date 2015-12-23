@@ -1,6 +1,6 @@
 'use strict'
 
-var app = angular.module("app", ["restangular", "ui.bootstrap", "ngMaterial", "ui.router"]);
+var app = angular.module("app", ["restangular", "ui.bootstrap", "ui.router"]);
 
 app.run(['$rootScope', '$state', '$stateParams', function (rootScope, state, stateParams) {
 
@@ -10,6 +10,21 @@ app.run(['$rootScope', '$state', '$stateParams', function (rootScope, state, sta
     // to active whenever 'contacts.list' or one of its decendents is active.
     rootScope.state = state;
     rootScope.stateParams = stateParams;
+
+    rootScope.company={
+      name:"Sharadha Software Solutions",
+      alias:"SSS",
+      domain:"shardhasoftware.com",
+      slogon:"",
+      logo:"",
+      branches:[
+            {branchId:"1001", location:{address:"6th Floor, Quadrant No: 3, Cyber Towers, Hitec City", city:"Hyderabad", state:"Andhra Pradesh", pin:"", country:"India"}, mobile:"091-9885514982", phone:"040-24601181", email:"info@shardhasoftware.com" },
+            {branchId:"1002", location:{address:"38725 Lexington Street", city:"Fremont", state:"California", pin:"94538", country:"US"}, mobile:"", phone:"605-218-5163", email:"info@shardhasoftware.com" },
+            {branchId:"1003", location:{address:"", city:"Seattle", state:"Washington", pin:"", country:"US"}, mobile:"", phone:"425-270-5178", email:"info@shardhasoftware.com" }
+            ]
+    };
+
+
     }]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function (stateProvider, urlRouterProvider) {
@@ -41,36 +56,36 @@ app.config(['$stateProvider', '$urlRouterProvider', function (stateProvider, url
 
         .state("index", {
           abstract : true,
-          templateUrl: 'views/home/home.html'
+          templateUrl: 'views/home.html'
         })
         .state("home", {
             parent: 'index',
             url:"/home",
         		views:{
         		'carousel':{
-        			templateUrl: 'views/home/carousel.html'
+        			templateUrl: 'views/shared/carousel.html'
         	   	}
           	}
     	   })
 
         .state('about', {
           url: '/about',
-          templateUrl: 'views/about/about.html'
+          templateUrl: 'views/about.html'
         })
 
         .state('career', {
           url: '/career',
-          templateUrl: 'views/career/career.html'
+          templateUrl: 'views/career.html'
         })
 
         .state('services', {
           url: '/services',
-          templateUrl: 'views/services/services.html'
+          templateUrl: 'views/services.html'
         })
 
         .state('contact', {
           url: '/contact',
-          templateUrl: 'views/contact/contact.html'
+          templateUrl: 'views/contact.html'
         });
 
 }]);
