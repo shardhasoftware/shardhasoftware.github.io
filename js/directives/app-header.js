@@ -6,6 +6,7 @@ app.directive("appHeader", function(){
 
 		},
 		restrict:'C',
+		replace:false,
 		templateUrl: 'views/shared/header.html'
 	}
 });
