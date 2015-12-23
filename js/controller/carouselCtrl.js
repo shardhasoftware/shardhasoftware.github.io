@@ -5,10 +5,10 @@ app.controller('carouselCtrl', ['$scope', function (scope) {
   scope.noWrapSlides = false;
   var slides = scope.slides = [];
   scope.slides=[
-            {'image':'/css/images/about.jpg', 'text':''},
-            {'image':'/css/images/book.jpg', 'text':''},
-            {'image':'/css/images/meeting.jpg', 'text':''},
-            {'image':'/css/images/nature.jpg', 'text':''},
-            {'image':'/css/images/screens.jpg', 'text':''}
+            {'image':'/css/images/img1.jpg', 'text':''},
+            {'image':'/css/images/img2.jpg', 'text':''},
+            {'image':'/css/images/img3.jpg', 'text':''},
+            {'image':'/css/images/img4.jpg', 'text':''},
+            {'image':'/css/images/img5.jpg', 'text':''}
             ];
 }]);
