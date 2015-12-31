@@ -83,10 +83,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function (stateProvider, url
           templateUrl: 'views/services.html'
         })
 
+        .state('contactus', {
+          abstract : true,
+          templateUrl: 'views/contactus.html'
+        })
         .state('contact', {
           url: '/contact',
-          templateUrl: 'views/contact.html'
+          parent: 'contactus',
+          views:{
+            'contactForm':{
+              templateUrl: 'views/shared/contact-form.html'
+              }
+            }
         });
 
 }]);
-
+app.constant('mangoDBApiKey', '_Dy8crrIJtVtEAZWnIMzlk5WD6sOyzNU');
+app.config(["RestangularProvider", 'mangoDBApiKey', function(RestangularProvider, mangoDBApiKey) {
+    //set the base url for api calls on our RESTful services
+    var newBaseUrl="https://api.mongolab.com/api/1/databases/shardhadb/collections/";
+    RestangularProvider.setBaseUrl(newBaseUrl);
+}]);
